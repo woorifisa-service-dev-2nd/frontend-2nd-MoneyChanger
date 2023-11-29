@@ -1,0 +1,23 @@
+{
+  "name": "exchangerate",
+  "version": "1.0.0",
+  "description": "Open API를 이용해 환율 정보를 가져와 브라우저 화면에 정보를 제공하는 프로젝트",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "lint": "npx eslint server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}
