@@ -1,5 +1,5 @@
-const exchangeRateBox = document.getElementsByClassName('exchange-rate-box');
-const curUnitArray = ['USD', 'JPY(100)', 'GBP', 'EUR', 'CNH', 'CAD', 'AUD', 'CHF'];
+// const exchangeRateBox = document.getElementsByClassName('exchange-rate-box');
+// const curUnitArray = ['USD', 'JPY(100)', 'GBP', 'EUR', 'CNH', 'CAD', 'AUD', 'CHF'];
 
 const getDate = () => {
   const today = new Date();
