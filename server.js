@@ -8,8 +8,8 @@ app.use(express.json());
 
 const AUTH_KEY = 'kliY8rxDpuxOUUhVm05znmH2ts6FVf2c';
 app.get('/exchangeRate', (req, res) => {
-  const date = req.query.date;
-  const url = `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${AUTH_KEY}&searchdate=${date}&data=AP01`;
+  const { date: useDate } = req.query;
+  const url = `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${AUTH_KEY}&searchdate=${useDate}&data=AP01`;
   const options = {
     url,
   };
@@ -18,7 +18,7 @@ app.get('/exchangeRate', (req, res) => {
       res.send(body);
     } else {
       res.status(response.statusCode).end();
-      console.log('error = ' + response.statusCode);
+      console.log(`error = ${response.statusCode}`);
     }
   });
 });
