@@ -34,3 +34,12 @@
     width: 80rem;
     height: 30rem;
 }
+
+.exchange-rate-box:hover {
+    cursor: pointer;
+    background-color: rgb(206, 203, 203);
+}
+
+.exchange-name {
+    font-weight: 700;
+}
