@@ -1,0 +1,36 @@
+.container {
+    font-family: "Hi Melody", sans-serift;
+    display: flex;
+    /* cross axis(세로) 정렬 */
+    align-items: center;
+    /* main axis(가로) 정렬 */
+    justify-content: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.margin-bottom {
+    margin-bottom: 2em;
+}
+
+.tittle {
+    font-size: 5rem;
+    margin: 0;
+}
+
+.boreder-solid{
+    border: 1px solid black;
+}
+
+.exchange-rate-box{
+    width: 10rem;
+    height: 5rem;
+    margin: 1rem 2rem;
+}
+
+.chart-box{
+    width: 80rem;
+    height: 30rem;
+}
