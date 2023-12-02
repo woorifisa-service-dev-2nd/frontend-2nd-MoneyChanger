@@ -1,3 +1,5 @@
+const convertToNumber = (stringNumber) => parseFloat(stringNumber.replaceAll(',', ''));
+
 const drawChart = (currencyUnit, responseData) => {
   const context = document.getElementsByClassName('chart-box')[0];
   if (context) {
@@ -10,59 +12,44 @@ const drawChart = (currencyUnit, responseData) => {
   mainContainer.appendChild(chartContainer);
 
   const labels = responseData.map((data) => data.date);
-  const ttbData = responseData.map((data) => data.ttb);
-  const ttsData = responseData.map((data) => data.tts);
-  const dealBasRData = responseData.map((data) => data.deal_bas_r);
-
-  // const max = ttsData.reduce((prev, cur) => prev > cur ? prev : cur);
-  // const min = ttbData.reduce((prev, cur) => prev < cur ? prev : cur);
+  const ttbData = responseData.map((data) => convertToNumber(data.ttb));
+  const ttsData = responseData.map((data) => convertToNumber(data.tts));
+  const dealBasRData = responseData.map((data) => convertToNumber(data.deal_bas_r));
 
   const data = {
     labels,
-    datasets: [{
-      label: `전신환(송금)을 ${currencyUnit}로 받을때 환율`,
-      data: ttbData,
-      fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1,
-    },
-    {
-      label: `전신환(송금)을 ${currencyUnit}로 보낼때 환율`,
-      data: ttsData,
-      fill: false,
-      borderColor: 'rgb(192, 75, 192)',
-      tension: 0.1,
-    },
-    {
-      label: '매매 기준율',
-      data: dealBasRData,
-      fill: false,
-      borderColor: 'rgb(192, 192, 75)',
-      tension: 0.1,
-    }],
+    datasets: [
+      {
+        label: `전신환(송금)을 ${currencyUnit}로 받을때 환율`,
+        data: ttbData,
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+      },
+      {
+        label: `전신환(송금)을 ${currencyUnit}로 보낼때 환율`,
+        data: ttsData,
+        fill: false,
+        borderColor: 'rgb(192, 75, 192)',
+        tension: 0.1,
+      },
+      {
+        label: '매매 기준율',
+        data: dealBasRData,
+        fill: false,
+        borderColor: 'rgb(192, 192, 75)',
+        tension: 0.1,
+      },
+    ],
   };
-
-  // const options = {
-  //   scales: {
-  //     y: {
-        // beginAtZero: true,
-        // max: max * 1.1,
-        // min: min * 0.9,
-        // ticks: {
-        //   stepSize: 500
-        // }
-  //     }
-  //   }
-  // };
 
   const config = {
     type: 'line',
     data,
-    // options,
-  }
+  };
 
   new Chart(chartContainer, config);
-}
+};
 
 function getQueryDate() {
   const useDate = new Date();
@@ -106,7 +93,6 @@ const exchangeRateHandler = (event) => {
   fetch(`http://localhost:3000/getJson?currency=${currencyUnit}`)
     .then((response) => response.json())
     .then((responseData) => {
-      // console.log(responseData);
       drawChart(currencyUnit, responseData);
     })
     .catch((error) => console.error(error));
