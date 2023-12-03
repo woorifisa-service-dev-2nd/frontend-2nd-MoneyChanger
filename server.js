@@ -51,6 +51,10 @@ app.get('/getJson', (req, res) => {
   for (let i = 1; i <= 30; i += 1) {
     const useDate = beforeDateStringFromToday(i);
     const jsonFilePath = jsonFilePathFrom(useDate);
+    // data 폴더가 없으면 생성
+    if (!fs.existsSync('./data')) {
+      fs.mkdirSync('./data');
+    }
     // 해당 날짜의 JSON 파일이 생성되어있지 않는 경우만 실행
     if (!fs.existsSync(jsonFilePath)) {
       const url = `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${AUTH_KEY}&searchdate=${useDate}&data=AP01`;

@@ -91,6 +91,20 @@ function getExchangeRate(func, date = getQueryDate()) {
   exchangeRateRequest.send();
 }
 
+function checkDataFolder(func1, func2) {
+  const dataFolder = './data';
+  const exchangeRateRequest = new XMLHttpRequest();
+  exchangeRateRequest.onreadystatechange = () => {
+    // 데이터를 다 받았고, 응답코드 200(성공)을 받았는지 체크
+    if (exchangeRateRequest.readyState === 4 && exchangeRateRequest.status === 200) {
+      console.log('Data folder created');
+      func1(func2);
+    }
+  };
+  exchangeRateRequest.open('GET', '/getJson', true);
+  exchangeRateRequest.send();
+}
+
 const exchangeRateHandler = (event) => {
   const currencyUnitHTML = event.currentTarget.getElementsByClassName('exchange-name')[0];
   const { currencyUnit } = currencyUnitHTML.dataset;
@@ -125,4 +139,4 @@ function newExchangeBox(exchangeRateJson) {
   });
 }
 
-window.onload = () => getExchangeRate(newExchangeBox);
+window.onload = () => checkDataFolder(getExchangeRate, newExchangeBox);
