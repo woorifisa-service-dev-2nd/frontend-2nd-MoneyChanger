@@ -133,7 +133,8 @@ function getExchangeRate(func, date = getQueryDate()) {
     <div>
         <h2 style="border-bottom: 1px solid #D8DEE4; color: #282D33;">5. 도메인 용어 정의</h2>
         <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282D33;">
-          도메인 용어
+            useDate : 조회 일자<br>
+            currencyUnit : 선택한 환율 정보<br>
         </div><br>
     </div>
     <div>
