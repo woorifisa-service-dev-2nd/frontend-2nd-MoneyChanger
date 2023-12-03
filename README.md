@@ -152,6 +152,6 @@ function getExchangeRate(func, date = getQueryDate()) {
         <li>김민선</li>
         <li>문지환</li>
         <li>신승민</li>
-        <li>이용진</li>
+        <li>이용진 : 팀원들과 함께 어떤 Open API로 어떤 서비스를 만들지 함께 고민해나가고, 분업하여 빠르게 완성해나갔습니다. 그 과정에서 함께 문제를 해결해나가는 경험이 좋았습니다.</li>
       </ul>
     </div>
