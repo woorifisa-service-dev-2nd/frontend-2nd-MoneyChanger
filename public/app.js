@@ -6,9 +6,9 @@ const drawChart = (currencyUnit, responseData) => {
     context.remove();
   }
 
-  const mainContainer = document.getElementsByClassName('main')[0];
+  const mainContainer = document.getElementsByClassName('chart')[0];
   const chartContainer = document.createElement('canvas');
-  chartContainer.setAttribute('class', 'container chart-box boreder-solid');
+  chartContainer.setAttribute('class', 'container chart-box boreder-solid shadow');
   mainContainer.appendChild(chartContainer);
 
   const labels = responseData.map((data) => data.date);
@@ -52,18 +52,23 @@ const drawChart = (currencyUnit, responseData) => {
 };
 
 function getQueryDate() {
-  const useDate = new Date();
+  let useDate = new Date();
   const hour = useDate.getHours();
   // 오전 11시 이전이면 전 날짜로 가져오기
   if (hour < 11) {
     useDate.setDate(useDate.getDate() - 1);
   }
 
-  const year = useDate.getFullYear(); // year
-  const month = useDate.getMonth() + 1; // month
-  const date = useDate.getDate(); // date
-
-  return `${year}-${month}-${date}`;
+  while (true) {
+    // Check if the date is a holiday
+    if (0 < useDate.getDay() && useDate.getDay() < 6) {
+      const year = useDate.getFullYear();
+      const month = useDate.getMonth() + 1;
+      const date = useDate.getDate();
+      return `${year}-${month < 10 ? '0' : ''}${month}-${date < 10 ? '0' : ''}${date}`;
+    }
+    useDate.setDate(useDate.getDate() - 1);
+  }
 }
 
 const makeExchangeRateContainer = (ex) => `<div class='container exchange-name' data-currency-unit='${ex.cur_unit}'>${ex.cur_nm} (${ex.cur_unit})</div>
@@ -99,11 +104,11 @@ const exchangeRateHandler = (event) => {
 };
 
 function newExchangeBox(exchangeRateJson) {
-  const mainContainer = document.getElementsByClassName('main')[0];
+  const mainContainer = document.getElementsByClassName('select')[0];
   let containerIdx = -1;
 
   exchangeRateJson.forEach((ex, idx) => {
-    if (idx % 5 === 0) {
+    if (idx % 6 === 0) {
       const newContainer = document.createElement('div');
       newContainer.setAttribute('class', 'exchange-rate container');
       mainContainer.appendChild(newContainer);
@@ -112,7 +117,7 @@ function newExchangeBox(exchangeRateJson) {
     if (ex.cur_unit !== 'KRW') {
       const exchangeRateContainer = document.getElementsByClassName('exchange-rate')[containerIdx];
       const newContainer = document.createElement('div');
-      newContainer.setAttribute('class', 'container flex-direction-column exchange-rate-box boreder-solid');
+      newContainer.setAttribute('class', 'container flex-direction-column exchange-rate-box boreder-solid border-radius');
       newContainer.addEventListener('click', exchangeRateHandler);
       newContainer.innerHTML = makeExchangeRateContainer(ex);
       exchangeRateContainer.appendChild(newContainer);
