@@ -1,4 +1,9 @@
-const convertToNumber = (stringNumber) => parseFloat(stringNumber.replaceAll(',', ''));
+const convertToNumber = (stringNumber) => {
+  if (!!stringNumber === false) {
+    return '';
+  }
+  return parseFloat(stringNumber.replaceAll(',', ''));
+};
 
 const drawChart = (currencyUnit, responseData) => {
   const context = document.getElementsByClassName('chart-box')[0];
