@@ -143,6 +143,8 @@ function getExchangeRate(func, date = getQueryDate()) {
           Airbnb의 Eslint 규칙을 토대로 약간의 수정 후 적용하였습니다.<br><br>
           * no-undef: off<br>
           : ESlint는 실행 환경이 node이고, node 환경에서는 document 또는 window 객체와 같은 DOM을 사용할 수 없기 때문에 'off' 설정
+          * no-console: console<br>
+          : 확인을 위해 console.log 등을 사용할 때 airbnb의 eslint에 걸리는 문제가 생겨 console을 사용할 수 있게 설정
         </div><br>
     </div>
      <div>
