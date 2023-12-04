@@ -3,5 +3,6 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'no-undef': 'off',
+    'no-console': 'console',
   },
 };
