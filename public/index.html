@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Changer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="app.js"></script>
 </head>
-<body>
-    
+<body class ="background">
+    <div class="header">
+        <a href="index.html" class="container">
+            <img class="logo" src="img/logo.png" alt="">
+        </a>
+        <!-- <div class="title">한국수출입은행 환율 정보</div> -->
+    </div>
+    <div class="main container flex-direction-column">
+        <div class="container chart"></div>
+        <div class="container select flex-direction-column"></div>
+    </div>
 </body>
 </html>
