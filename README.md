@@ -37,7 +37,7 @@
 * 조회 기준 일자 설정하기<br><br>
   데이터를 가져오는 날짜를 설정합니다.<br>
   (조회 일자가 당일 오전 11시 이전일 경우, 'null' 값을 반환해주므로 이러한 경우에는 이전 날의 데이터를 요청하도록 설정)
-```
+```JavaScript
 function getQueryDate() {
 const useDate = new Date();
 const hour = useDate.getHours();
@@ -52,7 +52,7 @@ return `${year}-${month}-${date}`; }
 ```
 
 * 환율 차트 그려주기
-```
+```JavaScript
 const drawChart = (currencyUnit, responseData) => {
   const context = document.getElementsByClassName('chart-box')[0];
 
@@ -104,7 +104,7 @@ const drawChart = (currencyUnit, responseData) => {
 ```
 
 * 환율 정보 받아오기
-```
+```JavaScript
 function getExchangeRate(func, date = getQueryDate()) {
   const exchangeRateRequest = new XMLHttpRequest();
   exchangeRateRequest.onreadystatechange = () => {
