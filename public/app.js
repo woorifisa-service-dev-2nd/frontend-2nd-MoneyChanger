@@ -2,4 +2,4 @@ import { getExchangeRate } from './api.js';
 import { checkDataFolder, newExchangeBox } from './utils.js';
 
 
-window.onload = () => checkDataFolder(getExchangeRate, newExchangeBox);
+window.onload = () => checkDataFolder().then(() => getExchangeRate().then((data) => newExchangeBox(data)));

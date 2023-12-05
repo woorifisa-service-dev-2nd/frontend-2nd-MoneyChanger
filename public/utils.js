@@ -15,10 +15,9 @@ const exchangeRateHandler = (event) => {
     .catch((error) => console.error(error));
 };
 
-export function newExchangeBox(exchangeRateJson) {
+export async function newExchangeBox(exchangeRateJson) {
   const mainContainer = document.getElementsByClassName('select')[0];
   let containerIdx = -1;
-
   exchangeRateJson.forEach((ex, idx) => {
     if (idx % 6 === 0) {
       const newContainer = document.createElement('div');
@@ -115,14 +114,13 @@ export function getQueryDate() {
   }
 }
 
-export function checkDataFolder(func1, func2) {
+export const checkDataFolder = async () => {
   const dataFolder = './data';
   const exchangeRateRequest = new XMLHttpRequest();
   exchangeRateRequest.onreadystatechange = () => {
     // 데이터를 다 받았고, 응답코드 200(성공)을 받았는지 체크
     if (exchangeRateRequest.readyState === 4 && exchangeRateRequest.status === 200) {
       console.log('Data folder created');
-      func1(func2);
     }
   };
   exchangeRateRequest.open('GET', '/getJson', true);
