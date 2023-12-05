@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { getQueryDate } from "./utils";
+import { getQueryDate, newExchangeBox } from "./utils";
+import { getExchangeRate } from "./api";
 
 describe('test 1', () => {
 	test('date', () => {
@@ -16,4 +17,7 @@ describe('test 1', () => {
 		expect(result).toBe(expected);
 	});
 
+	test.todo('asdf', () => {
+		const test = getExchangeRate(newExchangeBox);
+	})
 });
