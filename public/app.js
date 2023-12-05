@@ -51,7 +51,7 @@ const drawChart = (currencyUnit, responseData) => {
   new Chart(chartContainer, config);
 };
 
-function getQueryDate() {
+export function getQueryDate() {
   let useDate = new Date();
   const hour = useDate.getHours();
   // 오전 11시 이전이면 전 날짜로 가져오기
